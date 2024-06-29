@@ -1,12 +1,7 @@
-import {
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
-
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 //Usuário e Senha pro senhor testar: tiagomobilefirst@gmail.com
-// senha tiagomobile 
-
+//senha tiagomobile
 
 const isLoggedIn = (navigate) => {
   const user = window.localStorage.getItem("user");
@@ -31,7 +26,8 @@ const authLogin = async (auth, email, password) => {
       return "";
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    return e.message;
   }
 };
 
