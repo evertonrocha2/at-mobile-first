@@ -13,8 +13,8 @@ export default function Form() {
       games: false,
       movies: false,
       books: false,
+      others: false,
     },
-    termsAccepted: false,
   });
   const [message, setMessage] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
@@ -25,7 +25,11 @@ export default function Form() {
 
   const validateForm = () => {
     const { categories } = formData;
-    const isValid = categories.games || categories.movies || categories.books;
+    const isValid =
+      categories.games ||
+      categories.movies ||
+      categories.books ||
+      categories.others;
     setIsSubmitDisabled(!isValid);
   };
 
@@ -60,10 +64,6 @@ export default function Form() {
       ...formData,
       categories: { ...formData.categories, [name]: checked },
     });
-  };
-
-  const handleTermsChange = (e) => {
-    setFormData({ ...formData, termsAccepted: e.target.checked });
   };
 
   return (
@@ -114,9 +114,9 @@ export default function Form() {
               label="Livros"
             />
             <Checkbox
-              checked={formData.termsAccepted}
-              onChange={handleTermsChange}
-              name="termsAccepted"
+              checked={formData.categories.others}
+              onChange={handleCategoryChange}
+              name="others"
               label="Outros"
             />
           </div>
