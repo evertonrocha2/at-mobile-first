@@ -4,6 +4,7 @@ import TextField from "../components/TextField";
 import { Button } from "@mui/material";
 import Checkbox from "../components/Checkbox";
 import Fab from "../components/Fab";
+import Alert from "../components/Alert";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -129,7 +130,7 @@ export default function Form() {
           >
             Criar Item
           </Button>
-          {message && <p className="text-emerald-300">{message}</p>}
+          {message && <Alert>{message}</Alert>}
         </form>
       </div>
       <Fab />
